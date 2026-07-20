@@ -127,7 +127,7 @@ public class VistaAgendaTareas extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe escribir una tarea", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
         return;
         }
-        Tarea nueva = new Tarea(texto);
+        Tareas nueva = new Tareas(texto);
         gestor.agregarTarea(nueva);
         modeloLista.addElement(nueva.toString());
         txtTarea.setText("");
@@ -140,7 +140,7 @@ public class VistaAgendaTareas extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una tarea", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
-         Tarea tarea = gestor.obtenerTarea(index);
+         Tareas tarea = gestor.obtenerTarea(index);
         if (tarea.getEstado() == EstadoTarea.PENDIENTE) {
             int respuesta = javax.swing.JOptionPane.showConfirmDialog(this,
             "La tarea está pendiente. ¿Desea eliminarla de todas formas?",
@@ -159,7 +159,7 @@ public class VistaAgendaTareas extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una tarea", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Tarea tarea = gestor.obtenerTarea(index);
+        Tareas tarea = gestor.obtenerTarea(index);
         tarea.setEstado(EstadoTarea.COMPLETADO);
         modeloLista.set(index, tarea.toString());
     }//GEN-LAST:event_btnCompletarActionPerformed

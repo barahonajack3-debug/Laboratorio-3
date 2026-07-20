@@ -8,7 +8,7 @@ package AgendaDeTareas;
  *
  * @author USER
  */
-public class Tarea {
+public class Tareas {
     //Atributos
     private String Descripcion;
     private EstadoTarea Estado;
@@ -25,12 +25,9 @@ public class Tarea {
     public void setEstado(EstadoTarea Estado) {
         this.Estado = Estado;
     }
-     public void setDescripcion(String Descripcion) {
-        this.Descripcion = Descripcion;
-    }
      
     //M constructor
-    public Tarea(String Descripcion) {
+    public Tareas(String Descripcion) {
         this.Descripcion = Descripcion;
         this.Estado = EstadoTarea.PENDIENTE;
     }

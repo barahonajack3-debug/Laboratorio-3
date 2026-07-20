@@ -10,7 +10,7 @@ package AgendaDeTareas;
  */
 public class GestorTareas {
     //Atributos
-    private Tarea[] tareas;
+    private Tareas[] tareas;
     private int CantidadTareas;
     
     //M get
@@ -20,11 +20,21 @@ public class GestorTareas {
     
     //M Constructor
     public GestorTareas() {
-        this.tareas = new Tarea[100];
+        this.tareas = new Tareas[100];
     }
     
     //Funciones
-    public void agregarTarea(Tarea tarea) {
+    public int obtenerCantidadTareas(){
+        int cont=0;
+        for(int x=0;x<100;x++){
+            if(tareas[x]!=null){
+                cont++;
+            }
+        }
+        return cont;
+    }
+    
+    public void agregarTarea(Tareas tarea) {
         if (CantidadTareas < tareas.length) {
             tareas[CantidadTareas] = tarea;
             CantidadTareas++;
@@ -37,7 +47,7 @@ public class GestorTareas {
         tareas[CantidadTareas - 1] = null;
         CantidadTareas--;
     }
-    public Tarea obtenerTarea(int index) {
+    public Tareas obtenerTarea(int index) {
         return tareas[index];
     }
 }
