@@ -1,0 +1,42 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package AgendaDeTareas;
+
+/**
+ *
+ * @author USER
+ */
+public class Tareas {
+    //Atributos
+    private String Descripcion;
+    private EstadoTarea Estado;
+    
+    //M get
+    public String getDescripcion() {
+        return Descripcion;
+    }
+    public EstadoTarea getEstado() {
+        return Estado;
+    }
+    
+    //M set
+    public void setEstado(EstadoTarea Estado) {
+        this.Estado = Estado;
+    }
+     
+    //M constructor
+    public Tareas(String Descripcion) {
+        this.Descripcion = Descripcion;
+        this.Estado = EstadoTarea.PENDIENTE;
+    }
+
+    //To String
+    @Override
+    public String toString() {
+        String texto = (this.Estado == EstadoTarea.PENDIENTE) ? "Pendiente" : "Completada";
+        return this.Descripcion + "  ("+texto+")";
+    }
+    
+}
