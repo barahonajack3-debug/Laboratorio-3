@@ -19,7 +19,7 @@ public class GestorTareas {
     }
     
     //M Constructor
-    public GestorTareas(Tarea[] tareas) {
+    public GestorTareas() {
         this.tareas = new Tarea[100];
     }
     

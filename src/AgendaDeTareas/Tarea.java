@@ -39,7 +39,7 @@ public class Tarea {
     @Override
     public String toString() {
         String texto = (this.Estado == EstadoTarea.PENDIENTE) ? "Pendiente" : "Completada";
-        return "Descripcion:" + this.Descripcion + "\nEstado:"+ texto;
+        return this.Descripcion + "  ("+texto+")";
     }
     
 }

@@ -4,19 +4,24 @@
  */
 package AgendaDeTareas;
 
+import javax.swing.JOptionPane;
 /**
  *
  * @author USER
  */
-public class VistaGestorTareas extends javax.swing.JFrame {
+public class VistaAgendaTareas extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaGestorTareas.class.getName());
-
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaAgendaTareas.class.getName());
+    private javax.swing.DefaultListModel<String> modeloLista;
+    private GestorTareas gestor;
     /**
      * Creates new form VistaGestorTareas
      */
-    public VistaGestorTareas() {
+    public VistaAgendaTareas() {
         initComponents();
+        modeloLista = new javax.swing.DefaultListModel<>();
+        listTareas.setModel(modeloLista);
+        gestor = new GestorTareas();
     }
 
     /**
@@ -28,62 +33,136 @@ public class VistaGestorTareas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jPanel1 = new javax.swing.JPanel();
         txtTarea = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnCompletar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listTareas = new javax.swing.JList<>();
+
+        jRadioButton1.setText("jRadioButton1");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Gestor de Tareas");
+        setTitle("Agenda de Tareas");
 
-        jLabel1.setText("Tarea");
+        txtTarea.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        txtTarea.setText("jTextField1");
+        btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/icon48/add (4).png"))); // NOI18N
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(this::btnAgregarActionPerformed);
 
-        jButton1.setText("jButton1");
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/icon48/application_exit (4).png"))); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(this::btnEliminarActionPerformed);
 
-        jButton2.setText("jButton1");
+        btnCompletar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCompletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/icon48/accepted_48.png"))); // NOI18N
+        btnCompletar.setText("Completar");
+        btnCompletar.addActionListener(this::btnCompletarActionPerformed);
 
-        jButton3.setText("jButton1");
+        listTareas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        listTareas.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listTareas);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(txtTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTarea))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCompletar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtTarea, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAgregar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCompletar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:String texto = txtTarea.getText().trim();
+        String texto = txtTarea.getText().trim();
+        if (texto.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe escribir una tarea", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+        return;
+        }
+        Tarea nueva = new Tarea(texto);
+        gestor.agregarTarea(nueva);
+        modeloLista.addElement(nueva.toString());
+        txtTarea.setText("");
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        int index = listTareas.getSelectedIndex();
+        if (index == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una tarea", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+         Tarea tarea = gestor.obtenerTarea(index);
+        if (tarea.getEstado() == EstadoTarea.PENDIENTE) {
+            int respuesta = javax.swing.JOptionPane.showConfirmDialog(this,
+            "La tarea está pendiente. ¿Desea eliminarla de todas formas?",
+            "Confirmar eliminación", javax.swing.JOptionPane.YES_NO_OPTION);
+        if (respuesta != javax.swing.JOptionPane.YES_OPTION)   
+        return;
+    }
+    gestor.eliminarTarea(index);
+    modeloLista.remove(index);
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnCompletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompletarActionPerformed
+        // TODO add your handling code here:
+        int index = listTareas.getSelectedIndex();
+        if (index == -1) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Seleccione una tarea", "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        Tarea tarea = gestor.obtenerTarea(index);
+        tarea.setEstado(EstadoTarea.COMPLETADO);
+        modeloLista.set(index, tarea.toString());
+    }//GEN-LAST:event_btnCompletarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,14 +186,18 @@ public class VistaGestorTareas extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new VistaGestorTareas().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new VistaAgendaTareas().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnCompletar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> listTareas;
     private javax.swing.JTextField txtTarea;
     // End of variables declaration//GEN-END:variables
+
 }
