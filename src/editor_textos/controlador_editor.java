@@ -12,48 +12,53 @@ public class controlador_editor {
     
     private Editor editor;
 
-    
-     public controlador_editor(Editor editor) {
+    public controlador_editor(Editor editor) {
         this.editor = editor;
     }
 
-    public controlador_editor() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     public Editor getEditor() {
         return editor;
     }
 
-   
-    public void abrir(String ruta){
+    // Abre un documento
+    public void abrir(String ruta) {
         editor.setNombre(ruta);
         editor.setGuardado(true);
     }
-    
-    public void guardar(String ruta){
+
+    // Guarda un documento
+    public void guardar(String ruta) {
         editor.setNombre(ruta);
         editor.setGuardado(true);
-      
     }
-     public void establecerModificado(){
-         editor.setGuardado(false);
-     }
-  
-    public void establecerNegrita(boolean estado){
+
+    // Marca el editor como modificado
+    public void establecerModificado() {
+        editor.setGuardado(false);
+    }
+
+    // Cambiar negrita
+    public void establecerNegrita(boolean estado) {
         editor.setNegrita(estado);
         establecerModificado();
     }
-    public void establecerCursiva(boolean estado){
-         editor.setCursiva(estado);
+
+    // Cambiar cursiva
+    public void establecerCursiva(boolean estado) {
+        editor.setCursiva(estado);
         establecerModificado();
     }
-    public void cambiarcolorFondo(Color estado){
-           editor.setFondo(estado);
+
+    // Cambiar color de fondo
+    public void cambiarcolorFondo(Color estado) {
+        editor.setFondo(estado);
         establecerModificado();
     }
-    public void cambiarcolorLetra(Color estado){
-          editor.setLetra(estado);
+
+    // Cambiar color de letra
+    public void cambiarcolorLetra(Color estado) {
+        editor.setLetra(estado);
         establecerModificado();
     }
-    
+
 }

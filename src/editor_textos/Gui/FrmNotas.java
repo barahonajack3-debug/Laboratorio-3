@@ -7,7 +7,7 @@ package editor_textos.Gui;
 import editor_textos.ControladorDocumento.ControladorDocumentos;
 import editor_textos.controlador_editor;
 import editor_textos.Editor;
-
+import editor_textos.Documento;
 import javax.swing.JFrame;
 
 
@@ -24,7 +24,7 @@ public class FrmNotas extends javax.swing.JFrame {
      */
     public FrmNotas() {
         initComponents();
-        controlador = new ControladorDocumentos();
+        controlador = new ControladorDocumentos(new Documento());
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
@@ -152,7 +152,7 @@ public class FrmNotas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MitSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MitSalirActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_MitSalirActionPerformed
 
     private void MitAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MitAbrirActionPerformed
@@ -174,23 +174,19 @@ public class FrmNotas extends javax.swing.JFrame {
 
     private void CboxCursivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CboxCursivaActionPerformed
         // TODO add your handling code here:
-        //CboxCursiva.nose//
+        // Pendiente de implementar&
     }//GEN-LAST:event_CboxCursivaActionPerformed
 
     private void ItemCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemCopiarActionPerformed
-        // TODO add your handling code here:
-        ItemCopiar.setText("");
+        TaNota.copy();
     }//GEN-LAST:event_ItemCopiarActionPerformed
 
     private void ItemCortarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemCortarActionPerformed
-        // TODO add your handling code here:
-        ItemCortar.setText("");
-        
+        TaNota.cut();
     }//GEN-LAST:event_ItemCortarActionPerformed
 
     private void ItemPegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemPegarActionPerformed
-        // TODO add your handling code here:
-        ItemPegar.setText("");
+        TaNota.paste();
     }//GEN-LAST:event_ItemPegarActionPerformed
 
     private void CbxNegritaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbxNegritaActionPerformed

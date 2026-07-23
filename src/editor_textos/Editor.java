@@ -16,65 +16,64 @@ public class Editor {
     private Color fondo;
     private Color letra;
 
-    public String getNombre() {
-        return nombre;
+    // Constructor
+    public Editor(String nombre) {
+        this.nombre = nombre;
+        this.guardado = true;
+        this.negrita = false;
+        this.cursiva = false;
+        this.fondo = Color.WHITE;
+        this.letra = Color.BLACK;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    // Getters
+    public String getNombre() {
+        return nombre;
     }
 
     public boolean isGuardado() {
         return guardado;
     }
 
-    public void setGuardado(boolean guardado) {
-        this.guardado = guardado;
-    }
-
     public boolean isNegrita() {
         return negrita;
-    }
-
-    public void setNegrita(boolean negrita) {
-        this.negrita = negrita;
     }
 
     public boolean isCursiva() {
         return cursiva;
     }
 
-    public void setCursiva(boolean cursiva) {
-        this.cursiva = cursiva;
-    }
-
     public Color getFondo() {
         return fondo;
-    }
-
-    public void setFondo(Color fondo) {
-        this.fondo = fondo;
     }
 
     public Color getLetra() {
         return letra;
     }
 
+    // Setters
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setGuardado(boolean guardado) {
+        this.guardado = guardado;
+    }
+
+    public void setNegrita(boolean negrita) {
+        this.negrita = negrita;
+    }
+
+    public void setCursiva(boolean cursiva) {
+        this.cursiva = cursiva;
+    }
+
+    public void setFondo(Color fondo) {
+        this.fondo = fondo;
+    }
+
     public void setLetra(Color letra) {
         this.letra = letra;
     }
-    
 
-    public Editor(String nombre) {
-        this.nombre = nombre;
-        this.guardado = false;
-        this.negrita = false;
-        this.cursiva = false;
-        this.fondo = Color.white;
-        this.letra = Color.black;
-    }
-
- 
-    
-    
 }
