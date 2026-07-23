@@ -21,6 +21,11 @@ public class ControladorDocumentos {
         this.documentos = documentos;
     }
 
+    // Devuelve el documento actual
+    public Documento getDocumentos() {
+        return documentos;
+    }
+
     // Abrir archivo
     public void abrirArchivo() {
 

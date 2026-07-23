@@ -9,7 +9,7 @@ import editor_textos.controlador_editor;
 import editor_textos.Editor;
 import editor_textos.Documento;
 import javax.swing.JFrame;
-
+import java.awt.Font;
 
 /**
  *
@@ -156,11 +156,9 @@ public class FrmNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_MitSalirActionPerformed
 
     private void MitAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MitAbrirActionPerformed
-        // TODO add your handling code here:
-        FrmAbrir frm = new FrmAbrir();
-        this.DskpNotas.add(frm);
-        frm.setVisible(true);
-        frm.setLocation(this.getWidth()/2-frm.getWidth()/2, this.getHeight()/2-frm.getHeight()/2);
+        controlador.abrirArchivo();
+        TaNota.setText(controlador.getDocumentos().getContenido());
+        
     }//GEN-LAST:event_MitAbrirActionPerformed
 
     private void MitGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MitGuardarActionPerformed
@@ -173,8 +171,12 @@ public class FrmNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_MitGuardarActionPerformed
 
     private void CboxCursivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CboxCursivaActionPerformed
-        // TODO add your handling code here:
-        // Pendiente de implementar&
+        if (CboxCursiva.isSelected()) {
+        TaNota.setFont(new java.awt.Font("Arial", 2, 12));
+    } else {
+        TaNota.setFont(new java.awt.Font("Arial", 0, 12));
+    }
+        
     }//GEN-LAST:event_CboxCursivaActionPerformed
 
     private void ItemCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemCopiarActionPerformed
@@ -190,8 +192,11 @@ public class FrmNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_ItemPegarActionPerformed
 
     private void CbxNegritaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbxNegritaActionPerformed
-        // TODO add your handling code here:
-        //CbxNegrita Nose que ponerle ahi//
+         if (CbxNegrita.isSelected()) {
+        TaNota.setFont(new java.awt.Font("Arial", 1, 12));
+    } else {
+        TaNota.setFont(new java.awt.Font("Arial", 0, 12));
+    }
     }//GEN-LAST:event_CbxNegritaActionPerformed
 
     private void ItemCambiarFondoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemCambiarFondoActionPerformed
