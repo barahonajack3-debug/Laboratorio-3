@@ -9,7 +9,7 @@ import editor_textos.controlador_editor;
 import editor_textos.Editor;
 import editor_textos.Documento;
 import javax.swing.JFrame;
-import java.awt.Font;
+
 
 /**
  *
@@ -26,7 +26,6 @@ public class FrmNotas extends javax.swing.JFrame {
         initComponents();
         controlador = new ControladorDocumentos(new Documento());
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
     /**
@@ -162,21 +161,23 @@ public class FrmNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_MitAbrirActionPerformed
 
     private void MitGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MitGuardarActionPerformed
-        // TODO add your handling code here:
-        FrmGuardar frm = new FrmGuardar();
-        this.DskpNotas.add(frm);
-        frm.setVisible(true);
-        frm.setLocation(this.getWidth()/2-frm.getWidth()/2, this.getHeight()/2-frm.getHeight()/2);
-        
+        controlador.getDocumentos().setContenido(TaNota.getText());
+
+        controlador.guardarArchivo();
     }//GEN-LAST:event_MitGuardarActionPerformed
 
     private void CboxCursivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CboxCursivaActionPerformed
-        if (CboxCursiva.isSelected()) {
-        TaNota.setFont(new java.awt.Font("Arial", 2, 12));
-    } else {
-        TaNota.setFont(new java.awt.Font("Arial", 0, 12));
+    int estilo = 0;
+
+    if (CbxNegrita.isSelected()) {
+        estilo = estilo + 1;
     }
-        
+
+    if (CboxCursiva.isSelected()) {
+        estilo = estilo + 2;
+    }
+
+    TaNota.setFont(new java.awt.Font("Arial", estilo, 12));   
     }//GEN-LAST:event_CboxCursivaActionPerformed
 
     private void ItemCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemCopiarActionPerformed
@@ -192,25 +193,34 @@ public class FrmNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_ItemPegarActionPerformed
 
     private void CbxNegritaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbxNegritaActionPerformed
-         if (CbxNegrita.isSelected()) {
-        TaNota.setFont(new java.awt.Font("Arial", 1, 12));
-    } else {
-        TaNota.setFont(new java.awt.Font("Arial", 0, 12));
+     int estilo = 0;
+     if (CbxNegrita.isSelected()) {
+        estilo = estilo + 1;
+     }
+     if (CboxCursiva.isSelected()) {
+        estilo = estilo + 2;
     }
+     TaNota.setFont(new java.awt.Font("Arial", estilo, 12));
     }//GEN-LAST:event_CbxNegritaActionPerformed
 
     private void ItemCambiarFondoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemCambiarFondoActionPerformed
-        // TODO add your handling code here:
-        CambiarColor frm = new CambiarColor();
-        this.DskpNotas.add(frm);
-        frm.setVisible(true);
-        frm.setLocation(this.getWidth()/2-frm.getWidth()/2, this.getHeight()/2-frm.getHeight()/2);
-        
+         java.awt.Color color = javax.swing.JColorChooser.showDialog(
+            this,
+            "Seleccione un color",
+            TaNota.getBackground());
+         if (color != null) {
+        TaNota.setBackground(color);
+         } 
     }//GEN-LAST:event_ItemCambiarFondoActionPerformed
 
     private void ItemColorLetraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemColorLetraActionPerformed
-        // TODO add your handling code here:
-       // ItemColorLetra no se//
+        java.awt.Color color = javax.swing.JColorChooser.showDialog(
+            this,
+            "Seleccione un color",
+            TaNota.getForeground());
+        if (color != null) {
+        TaNota.setForeground(color);
+        }
     }//GEN-LAST:event_ItemColorLetraActionPerformed
 
     /**
